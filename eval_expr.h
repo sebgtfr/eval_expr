@@ -1,3 +1,9 @@
+/**
+* \file			    eval_expr.h
+* \author			Sébastien Le Maire
+* \version			1.0
+* \date				12 Avril 2018
+*/
 
 #ifndef EVAL_EXPR_H_
 # define EVAL_EXPR_H_

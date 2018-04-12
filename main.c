@@ -1,4 +1,9 @@
-
+/**
+* \file			    main.c
+* \author			Sébastien Le Maire
+* \version			1.0
+* \date				12 Avril 2018
+*/
 
 #include "eval_expr.h"
 #include <stdio.h>
