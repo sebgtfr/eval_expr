@@ -12,6 +12,7 @@ typedef enum					e_eval_expr_status
 {
 								EVAL_EXPR_PARENTHESIS = 0,
 								EVAL_EXPR_DIVIDE_ZERO,
+								EVAL_EXPR_MODULO_ZERO,
 								EVAL_EXPR_INCORRECT,
 								EVAL_EXPR_INVALID_NUMBER,
 								EVAL_EXPR_SUCCESS,

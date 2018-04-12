@@ -5,6 +5,7 @@
 * \date				12 Avril 2018
 */
 
+#include <stdint.h>
 #include <stdlib.h>
 #include "eval_expr.h"
 
@@ -45,12 +46,12 @@ static t_eval_expr_status		calc(double const left, double const right,
 		else
 			status = EVAL_EXPR_DIVIDE_ZERO;
 		break;
-	/* case EVAL_EXPR_MOD: */
-	/* 	if (right != 0.0d) */
-	/* 		*res = left % right; */
-	/* 	else */
-	/* 		status = EVAL_EXPR_DIVIDE_ZERO; */
-	/* 	break; */
+	case EVAL_EXPR_MOD:
+		if (right != 0.0d)
+			*res = ((uint64_t)left) % ((uint64_t)right);
+		else
+			status = EVAL_EXPR_MODULO_ZERO;
+		break;
 	default:
 		status = EVAL_EXPR_INCORRECT;
 		break;
@@ -98,9 +99,9 @@ static t_eval_expr_status		product(char const **expr,
 		case '/':
 			if (**expr == '/')
 				op = EVAL_EXPR_DIV;
-		/* case '%': */
-		/* 	if (**expr == '%') */
-		/* 		op = EVAL_EXPR_MOD; */
+		case '%':
+			if (**expr == '%')
+				op = EVAL_EXPR_MOD;
 			++(*expr);
 			delete_space(expr);
 			status = (isOperator(**expr)) ? EVAL_EXPR_INCORRECT : product(expr, &rightOperand);
@@ -120,7 +121,7 @@ static t_eval_expr_status		product(char const **expr,
 		}
 		if (status == EVAL_EXPR_SUCCESS)
 		{
-			if (rightOperand != 1.0d)
+			if (rightOperand != 1.0d || op == EVAL_EXPR_MOD)
 				status = calc(leftOperand, rightOperand, res, op);
 			else
 				*res = leftOperand;

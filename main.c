@@ -26,6 +26,7 @@ int								main(int ac, char **av)
 			{
 				"Parenthesis not close !",
 				"Division by 0",
+				"Modulo by 0",
 				"Expression invalid !",
 				"Number invalid !"
 			};

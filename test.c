@@ -60,9 +60,9 @@ int								main(void)
 	eval_expr(expr, &res);
 	printExpr(expr, 2.5d*4, res);
 
-	expr = "5 + 5.5 * 10";
+	expr = "(1.5 * (5 + 5)) % 10";
 	eval_expr(expr, &res);
-	printExpr(expr, 5 + 5.5d * 10, res);
+	printExpr(expr, (int)(1.5d * (5 + 5)) % 10, res);
 
 	(void)printf("-----> COMPLEXE :\n");
 
