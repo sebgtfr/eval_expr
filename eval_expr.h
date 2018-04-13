@@ -29,4 +29,6 @@ typedef enum					e_eval_expr_operator
 								EVAL_EXPR_NONE,
 }								t_eval_expr_operator;
 
+t_eval_expr_status				eval_expr(char const *expr, double *res);
+
 #endif /* !EVAL_EXPR_H_ */
